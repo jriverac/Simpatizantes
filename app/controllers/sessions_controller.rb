@@ -1,3 +1,11 @@
+=begin===================================================================================
+CONTROLLER
+=========================================================================================
+CHANGE TRACK
+14/01/2012  jrc This is the main controller for sessions.
+
+=========================================================================================
+=end 
 class SessionsController < ApplicationController
   def new
   end
@@ -8,8 +16,6 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       session[:user_name] = user.user_id
       session[:user_super] = user.super
-debugger
-
       if user.super 
         redirect_to supporters_url, :notice => "Bienvenido Administrador"
       else
