@@ -1,0 +1,93 @@
+<%= form_for(@supporter) do |f| %>
+  <% if @supporter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@supporter.errors.count, "error") %> prohibited this supporter from being saved:</h2>
+
+      <ul>
+      <% @supporter.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table width="100%">
+	<tr>
+		<td>
+			<div class="field">
+		    <%= f.label :first_name, "Nombre" %><br />
+		    <%= f.text_field :first_name %>
+		  </div>
+		</td>
+		<td>
+			<div class="field">
+		    <%= f.label :father_last_name, "Apellido Paterno" %><br />
+		    <%= f.text_field :father_last_name %>
+		  </div>
+		</td>
+		<td>
+			<div class="field">
+		    <%= f.label :mother_last_name, "Apellido Materno" %><br />
+		    <%= f.text_field :mother_last_name %>
+		  </div>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="field">
+	    <%= f.label :email, "Correo Electrónico" %><br />
+	    <%= f.text_field :email %>
+	  </div>
+		</td>
+		<td><div class="field">
+	    <%= f.label :phone, "Teléfono" %><br />
+	    <%= f.text_field :phone %>
+	  </div>
+		</td>
+		<td>
+	  <div class="field">
+	    <%= f.label :cellphone, "Celular" %><br />
+	    <%= f.text_field :cellphone %>
+	  </div>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="field">
+	    <%= f.label :street_address, "Domicilio" %><br />
+	    <%= f.text_field :street_address %>
+	  </div>
+		</td>
+
+		<td><div class="field">
+	    <%= f.label :municipality, "Municipio" %><br />
+	    <%= f.text_field :municipality %>
+	  </div>
+		</td>
+		<td><div class="field">
+	    <%= f.label :code, "Código Postal" %><br />
+	    <%= f.text_field :code %>
+	  </div>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="field">
+	    <%= f.label :section, "Sección" %><br />
+	    <%= f.text_field :section %>
+	  </div>
+		</td>
+		<td>
+		</td>
+		<td>
+		</td>
+	</tr>
+	</table>
+
+
+
+ 
+
+
+
+ 
+  <div class="actions">
+    <%= submit_tag(value="Guardar Cambios") %>
+  </div>
+<% end %>

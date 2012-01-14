@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Aplicacion de Simpatizantes</title>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag :application %>
+
+
+  <%= javascript_include_tag :all => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+
+<body background="/assets/bg.jpg" style="background-attachment: fixed;">
+
+	<div align="center">
+		<table width="960">
+			<tr>
+				<td width="75"><%= image_tag('PANBadge.png')%></td>
+				<td width="10">&nbsp;</td><td align="left"><span style="color: #ffffff">
+					<strong>Proceso Interno de Selecci&oacute;n de Candidatos del Partido Acción Nacional</strong>
+					<br/>
+					<br/>
+					<div id="user_nav">
+
+					  <% if current_user %>
+					    Conectado como: <%= current_user.user_id %>.
+					    <%= link_to "Salir", log_out_path %>
+							<% if session[:user_super] %>
+						    	, o <%= link_to "agregar nuevo usuario.", sign_up_path %>
+							<% end %>
+					  <% else %>
+					
+					    <%= link_to "Entrar", log_in_path %>
+					  <% end %>
+					</div></span>
+				</td>
+			</tr>
+		</table>
+<%= image_tag('Simpatizantes-Logo.png', :style => 'border-radius: 5px 5px; -webkit-box-shadow: 3px 3px 15px #000000') %>
+	</div>
+
+<table width="960" align="center" bgcolor="#ffffff" style="border-radius: 5px 5px; -webkit-box-shadow: 3px 3px 15px #000000;">
+	<tr>
+		<% if not flash.empty? %>
+	
+		<td bgcolor="#ffffaa" style="border:solid, 1px" align="center">
+			<% flash.each do |name, msg| %>
+		  		<%= content_tag :div, msg, :id => "flash_#{name}" %>
+			<% end %>
+		</td>
+		<% end %>
+	</tr>
+	<tr>
+		<td>
+			<%= yield %>
+		</td>
+	</tr>
+</table>
+
+<p>&nbsp;</p>
+
+<table width="960" align="center">
+	<tr>
+		<td>
+			<p align="left"><span style="color: #ffffff">Día de la Elección: 5 de Frebrero de 2012 &bull; Localiza tu casilla con anticipación</span></p>
+		</td>
+		<td align="right"><%= image_tag('QixiBadge.png')%>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

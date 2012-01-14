@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  supporter_id: 1
+  contact_type: MyString
+  content: MyText
+
+two:
+  supporter_id: 1
+  contact_type: MyString
+  content: MyText

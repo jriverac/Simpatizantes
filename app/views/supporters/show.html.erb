@@ -1,0 +1,94 @@
+<h2><%= @supporter.first_name %>&nbsp;<%= @supporter.father_last_name %>&nbsp;<%= @supporter.mother_last_name %><hr/></h2>
+
+<table width="100%">
+	<tr>
+		<td>
+			<p>
+		  		<b>Email:</b>
+		  		<%= @supporter.email %>
+			</p>
+		</td>
+		<td>
+			<p>
+			  <b>Phone:</b>
+			  <%= @supporter.phone %>
+			</p>
+		</td>
+		<td>
+			<p>
+			  <b>Cellphone:</b>
+			  <%= @supporter.cellphone %>
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>
+			  <b>Street address:</b>
+			  <%= @supporter.street_address %>
+			</p>
+		</td>
+		<td>
+			<p>
+			  <b>Municipality:</b>
+			  <%= @supporter.municipality %>
+			</p>
+		</td>
+		<td>
+			<p>
+			  <b>Code:</b>
+			  <%= @supporter.code %>
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>
+			  <b>Section:</b>
+			  <%= @supporter.section %>
+			</p>
+		</td>
+	</tr>
+</table>
+
+<h2>Agregar un comentario<hr/></h2>
+<%= form_for [@supporter, @new_comment] do |f| %>
+	<p>
+		<p><%= f.label :contact_type, "Tipo de Contacto" %><br/>
+		<%= f.radio_button :contact_type, 'Correo Electrónico', :checked => true%>
+		<%= f.label :contact_type, 'Correo Electrónico', :value => 'Correo Electrónico' %>
+		<%= f.radio_button :contact_type, 'Llamada' %>	
+		<%= f.label :contact_type, 'Llamada', :value => 'Llamada' %>
+		<%= f.radio_button :contact_type, 'Visita'%>
+		<%= f.label :contact_type, 'Visita', :value => 'Visita' %>
+		<%= f.radio_button :contact_type, 'SMS' %>
+		<%= f.label :contact_type, 'SMS', :value => 'SMS' %>
+</p>
+		<p>
+		<%= f.label :content, "Comentario" %><br/>
+		<%= f.text_area :content, :cols => "132", :rows => "10"%></p>
+
+	</p>
+	<p>
+		<%= f.submit "Agregar Comment"%>
+	</p>
+<% end %>
+
+<h2>Comentarios<hr/></h2>
+
+
+<% if @supporter.comments.empty? %>
+	<p>Aún no hay comentarios sobre este simpatizante. ¿Deseas agregar un comentariov?</p>
+<% else %>
+<div id="comments">
+	<table width="100%" border="1">
+		<tr><th>Contacto</th><th>Fecha</th><th>Comentario</th>
+	<%= render :partial => @supporter.comments %>
+	</table>
+</div>
+<% end %>
+
+
+
+<%= link_to 'Edit', edit_supporter_path(@supporter) %> |
+<%= link_to 'Back', supporters_path %>
