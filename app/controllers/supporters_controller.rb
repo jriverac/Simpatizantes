@@ -76,6 +76,7 @@ class SupportersController < ApplicationController
   # DELETE /supporters/1
   # DELETE /supporters/1.json
   def destroy
+
     @supporter = Supporter.find(params[:id])
     @supporter.destroy
 
@@ -83,5 +84,7 @@ class SupportersController < ApplicationController
       format.html { redirect_to supporters_url }
       format.json { head :ok }
     end
+    
+
   end
 end

@@ -47,7 +47,7 @@ border-top-width: 1px;">
     <td><%= supporter.section %></td>
 
     <% if session[:user_super] %>
-    <td align="center"><%= link_to 'Destroy', supporter, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td align="center"><%= link_to 'Eliminar', supporter, :confirm => '¿Esta seguro? Esta acción no se puede deshacer.', :method => :delete %></td>
 	<% end %>
   </tr>
 <% end %>
