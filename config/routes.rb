@@ -14,9 +14,9 @@ SimpV2::Application.routes.draw do
       resources :comments
     end 
   end 
-    resources :supporters do
-      resources :comments
-    end 
+  resources :supporters do
+    resources :comments
+  end 
 
 
   resources :sessions
