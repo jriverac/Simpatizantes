@@ -10,7 +10,7 @@
 
     <th>Code</th>
     <th>Section</th>
-    <th colspan="3">Acciones</th>
+    <th colspan="2">Acciones</th>
   </tr>
 <% 
 
@@ -22,7 +22,7 @@
 %>
 <% @user.supporters.each do |supporter| %>
   <tr>
-    <td><%= supporter.first_name %>&nbsp;<%= supporter.father_last_name %>&nbsp;<%= supporter.mother_last_name %></td>
+    <td><%= link_to supporter.first_name + " " + supporter.father_last_name + " " + supporter.mother_last_name, supporter %></td>
     <td><%= supporter.email %></td>
     <td><%= supporter.phone %></td>
     <td><%= supporter.cellphone %></td>
@@ -30,7 +30,7 @@
 
     <td><%= supporter.code %></td>
     <td><%= supporter.section %></td>
-    <td><%= link_to 'Show', supporter %></td>
+
     <td><%= link_to 'Edit', edit_supporter_path(supporter) %></td>
     <td><%= link_to 'Destroy', supporter, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
