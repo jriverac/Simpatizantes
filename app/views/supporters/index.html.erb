@@ -14,8 +14,13 @@
 	<% end %>
 	]
 </p>
-<table border="1" width="100%">
-  <tr>
+<table width="100%" style="border-color: #400080;
+border-style: solid;
+border-left-width: 1px;
+border-bottom-width: 1px;
+border-right-width: 1px;
+border-top-width: 1px;">
+  <tr class="supporters_header">
     <th>Nombre</th>
     <th>Correo Electrónico</th>
     <th>Teléfono</th>
@@ -31,7 +36,7 @@
 
 
 <% @supporters.each do |supporter| %>
-  <tr>
+  <tr class="<%= cycle("odd_row", "even_row")%>">
     <td><%= link_to supporter.first_name + " " + supporter.father_last_name + " " + supporter.mother_last_name, supporter %></td>
     <td><%= supporter.email %></td>
     <td><%= supporter.phone %></td>
