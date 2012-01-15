@@ -1,22 +1,22 @@
-<h2><%= @supporter.first_name %>&nbsp;<%= @supporter.father_last_name %>&nbsp;<%= @supporter.mother_last_name %><hr/></h2>
-
-<table width="100%" border="1">
+<h1><%= @supporter.first_name %>&nbsp;<%= @supporter.father_last_name %>&nbsp;<%= @supporter.mother_last_name %><hr/></h1>
+<div style="background: #eeeeee">
+<table width="100%">
 	<tr>
 		<td>
 			
-		  		<b>Email:</b>
+		  		<b>Correo Electrónico:</b>
 		  		<%= @supporter.email %>
 			
 		</td>
 		<td>
 			
-			  <b>Phone:</b>
+			  <b>Teléfono:</b>
 			  <%= @supporter.phone %>
 			
 		</td>
 		<td>
 		
-			  <b>Cellphone:</b>
+			  <b>Celular:</b>
 			  <%= @supporter.cellphone %>
 			
 		</td>
@@ -24,35 +24,37 @@
 	<tr>
 		<td>
 			
-			  <b>Street address:</b>
+			  <b>Domicilio:</b>
 			  <%= @supporter.street_address %>
 			
 		</td>
 		<td>
 			
-			  <b>Municipality:</b>
+			  <b>Municipio:</b>
 			  <%= @supporter.municipality %>
 			
 		</td>
 		<td>
 			
-			  <b>Code:</b>
-			  <%= @supporter.code %>
+			 
 			
 		</td>
 	</tr>
 	<tr>
 		<td>
 			
-			  <b>Section:</b>
+			  <b>Sección:</b>
 			  <%= @supporter.section %>
 			
 		</td>
-		<td>&nbsp;</td>
+		<td> <b>Clave Electoral:</b>
+		  <%= @supporter.code %></td>
 				<td>&nbsp;</td>
 	</tr>
 </table>
-
+<p align="center">[ <%= link_to 'Editar', edit_supporter_path(@supporter) %> |
+<%= link_to 'Regresar', supporters_path %> ]
+</p></div>
 <h2>Agregar un comentario<hr/></h2>
 <%= form_for [@supporter, @new_comment] do |f| %>
 	<p>
@@ -92,5 +94,4 @@
 
 
 
-<%= link_to 'Edit', edit_supporter_path(@supporter) %> |
-<%= link_to 'Back', supporters_path %>
+

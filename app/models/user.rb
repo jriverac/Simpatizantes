@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   has_many :comments
   
   attr_accessor :password
+  attr_accessor :email
+  
   before_save :encrypt_password
   
   validates_confirmation_of :password

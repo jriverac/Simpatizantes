@@ -23,7 +23,11 @@
     <%= f.label :municipality, "Municipio" %><br />
     <%= f.text_field :municipality %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+	<div class="field">
+	
+	<%= f.check_box :super %><%= f.label :super, "Administrador" %>
+	</div>
+	<div class="actions">
+    <%= f.submit "Guardar Cambios" %>
   </div>
 <% end %>
