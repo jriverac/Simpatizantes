@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
         redirect_to supporters_url, :notice => "Bienvenido Usuario"
       end
     else
-      flash.now.alert = "Correo electrónico o contraseña incorrecta."
+      flash.now.alert = "Correo electronico o contrasena incorrecta."
       render "new"
     end
   end
