@@ -1,16 +1,7 @@
-<h1>New supporter</h1>
+<h1>Nuevo Simpatizante</h1>
 
-<% if @supporter.errors.any? %>
-  <div class="error_messages">
-    <h2>Form is invalid</h2>
-    <ul>
-      <% for message in @supporter.errors.full_messages %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+
 
 <%= render 'form' %>
 
-<%= link_to 'Back', supporters_path %>
+

@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
       format.json { render :json => @comment }
     end
   end
-
+=end
   # GET /comments/new
   # GET /comments/new.json
   def new
@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
 
   # POST /comments
   # POST /comments.json
-=end
+
   def create
 
     
@@ -52,12 +52,13 @@ class CommentsController < ApplicationController
         format.html { redirect_to @supporter, :notice => 'Tu comentario se ha agregado con exito.' }
 
       else
-        format.html { render :action => "new" }
+        format.html { redirect_to @supporter, :notice => 'No se pudo agregar tu comentario.' }
+        #format.html { render :action => "new" }
         format.json { render :json => @comment.errors, :status => :unprocessable_entity }
       end
     end
   end
-=begin
+begin
   # PUT /comments/1
   # PUT /comments/1.json
   def update
@@ -74,7 +75,7 @@ class CommentsController < ApplicationController
     end
 
   end
-=end
+end
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy

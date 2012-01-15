@@ -1,26 +1,36 @@
-<h1>Mis Simpatizantes<hr/></h1>
-
-<table border="1" width="100%">
-  <tr>
-    <th>Nombre</th>
-    <th>Email</th>
-    <th>Phone</th>
-    <th>Cellphone</th>
-
-
-    <th>Code</th>
-    <th>Section</th>
-    <th colspan="2">Acciones</th>
-  </tr>
 <% 
-
 	if params[:user_id] != nil
 		@user = User.find(params[:user_id])		
 	else
 		@user = User.find(session[:user_id]) if session[:user_id]
 	end
 %>
-<% @user.supporters.each do |supporter| %>
+
+<h1>Mis Simpatizantes<hr/></h1>
+<p>
+	[ <%= link_to 'Nuevo Simpatizante', new_supporter_path %>  
+	<% if session[:user_super] %>
+		| <%= link_to 'Nuevo Usuario', new_user_path %>
+	<% end %>
+	]
+</p>
+<table border="1" width="100%">
+  <tr>
+    <th>Nombre</th>
+    <th>Correo Electrónico</th>
+    <th>Teléfono</th>
+    <th>Celular</th>
+
+
+    <th>Codigo Electoral</th>
+    <th>Sección</th>
+<% if session[:user_super] %>
+    <th>Acciones</th>
+<% end %>
+  </tr>
+
+
+<% @supporters.each do |supporter| %>
   <tr>
     <td><%= link_to supporter.first_name + " " + supporter.father_last_name + " " + supporter.mother_last_name, supporter %></td>
     <td><%= supporter.email %></td>
@@ -31,12 +41,13 @@
     <td><%= supporter.code %></td>
     <td><%= supporter.section %></td>
 
-    <td><%= link_to 'Edit', edit_supporter_path(supporter) %></td>
-    <td><%= link_to 'Destroy', supporter, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% if session[:user_super] %>
+    <td align="center"><%= link_to 'Destroy', supporter, :confirm => 'Are you sure?', :method => :delete %></td>
+	<% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'Nuevo Simpatizante', new_supporter_path %>
+

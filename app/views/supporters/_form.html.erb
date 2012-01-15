@@ -32,50 +32,109 @@
 		</td>
 	</tr>
 	<tr>
-		<td><div class="field">
-	    <%= f.label :email, "Correo Electrónico" %><br />
-	    <%= f.text_field :email %>
-	  </div>
-		</td>
-		<td><div class="field">
-	    <%= f.label :phone, "Teléfono" %><br />
-	    <%= f.text_field :phone %>
-	  </div>
+		<td>
+			<div class="field">
+				<%= f.label :gender, "Genero"%><br/>
+				<%= f.radio_button :gender, 'Masculino', :checked => true%>
+				<%= f.label :gender, 'Masculino', :value => 'Masculino' %>
+				<%= f.radio_button :gender, 'Femenino' %>
+				<%= f.label :gender, 'Femenino', :value => 'Femenino' %>
+			</div>
 		</td>
 		<td>
-	  <div class="field">
-	    <%= f.label :cellphone, "Celular" %><br />
-	    <%= f.text_field :cellphone %>
-	  </div>
+			<div class="field">
+				<%= f.label :nickname, "Apodo"%><br/>
+				<%= f.text_field :nickname%>
+			</div>
+		</td>
+		<td>
+			&nbsp;
 		</td>
 	</tr>
 	<tr>
-		<td><div class="field">
-	    <%= f.label :street_address, "Domicilio" %><br />
-	    <%= f.text_field :street_address %>
-	  </div>
-		</td>
-
-		<td><div class="field">
-	    <%= f.label :municipality, "Municipio" %><br />
-	    <%= f.text_field :municipality %>
-	  </div>
+		<td>
+			<div class="field">
+	    		<%= f.label :email, "Correo Electrónico" %><br />
+	    		<%= f.text_field :email %>
+	  		</div>
 		</td>
 		<td>
+			<div class="field">
+	    		<%= f.label :phone, "Teléfono" %><br />
+	    		<%= f.text_field :phone %>
+	  		</div>
+		</td>
+		<td>
+	  		<div class="field">
+	    		<%= f.label :cellphone, "Celular" %><br />
+	    		<%= f.text_field :cellphone %>
+	  		</div>
 		</td>
 	</tr>
 	<tr>
-		<td><div class="field">
-	    <%= f.label :section, "Sección" %><br />
-	    <%= f.text_field :section %>
-	  </div>
-		</td>
-		<td><div class="field">
-	    <%= f.label :code, "Clave Electoral" %><br />
-	    <%= f.text_field :code %>
-	  </div>
+		<td>
+			<div class="field">
+	    		<%= f.label :street_address, "Domicilio" %><br />
+	    		<%= f.text_field :street_address %>
+	  		</div>
 		</td>
 		<td>
+			<div class="field">
+				<%= f.label :internal_number, "Número Interior"%><br/>
+				<%= f.text_field :internal_number %>
+			</div>
+		</td>
+		<td>
+			<div class="field">
+				<%= f.label :external_number, "Número Exterior" %><br/>
+				<%= f.text_field :external_number %>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="field">
+				<%= f.label :neighborhood, "Colonia" %><br/>
+				<%= f.text_field :neighborhood %>
+			</div>
+		</td>
+		<td>
+			<div class="field">
+	    		<%= f.label :municipality, "Municipio" %><br />
+	    		<%= f.text_field :municipality %>
+	  		</div>
+		</td>
+		<td>
+			<div class="field">
+				<%= f.label :between_streets, "Entre las calles" %><br/>
+				<%= f.text_field :between_streets %>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="field">
+	    		<%= f.label :section, "Sección" %><br />
+	    		<%= f.text_field :section %>
+	  		</div>
+		</td>
+		<td>
+			<div class="field">
+	    		<%= f.label :code, "Clave Electoral" %><br />
+	    		<%= f.text_field :code %>
+	  		</div>
+		</td>
+		<td>
+			<div class="field">
+				<%= f.label :type_of_card, "Credencial"%><br/>
+				<%= f.radio_button :type_of_card, 'No Sabemos', :checked => true %>
+				<%= f.label :type_of_card, 'No Sabemos', :value => 'No Sabemos' %>
+				<%= f.radio_button :type_of_card, '03' %>
+				<%= f.label :type_of_card, '\'03', :value => '03' %>
+				<%= f.radio_button :type_of_card, 'Nueva' %>
+				<%= f.label :gender, 'Nueva', :value => 'Nueva' %>
+			
+			</div>
 		</td>
 	</tr>
 	</table>
@@ -88,6 +147,6 @@
 
  
   <div class="actions">
-    <%= submit_tag(value="Guardar Cambios") %>
+    <%= submit_tag(value="Guardar") %> <%= link_to 'Cancelar', @supporter %> 
   </div>
 <% end %>

@@ -41,7 +41,7 @@ class SupportersController < ApplicationController
     @supporter = Supporter.find(params[:id])
   end
 
-=begin  # POST /supporters
+  # POST /supporters
   # POST /supporters.json
   def create
     @supporter = Supporter.new(params[:supporter])
@@ -56,24 +56,6 @@ class SupportersController < ApplicationController
       end
     end
   end
-=end
-
-def create
-  @user = User.find(session[:user_id])
-  @supporter = @user.supporters.create!(params[:supporter])
-  
-  respond_to do |format|
-    if @supporter.save 
-      format.html { redirect_to @supporter, :notice => 'El registro se ha creado con exito.' }
-    else
-      render "new"
-    end
-  end
-end
-
-
-
-
 
   # PUT /supporters/1
   # PUT /supporters/1.json

@@ -1,64 +1,137 @@
 <h1><%= @supporter.first_name %>&nbsp;<%= @supporter.father_last_name %>&nbsp;<%= @supporter.mother_last_name %><hr/></h1>
+<p>[
+	<%= link_to 'Catalogo', supporters_path %>  
+	|
+	<%= link_to 'Editar', edit_supporter_path(@supporter) %> 
+	]
+	
+</p>
+<h3>Información Personal</h3>
 <div style="background: #eeeeee">
 <table width="100%">
 	<tr>
 		<td>
+			<b>Genero:</b>
+		</td>
+		<td>
+			<%= @supporter.gender%>
+		</td>
+		<td>
+			<b>Sobrenombre:</b>
+		</td>
+		<td>
+			"<%= @supporter.nickname %>"
+		</td>
+		<td>
+			&nbsp;
+		</td>
+		<td>
+			&nbsp;
+		</td>
+	</tr>
+	<tr>
+		<td>
 			
 		  		<b>Correo Electrónico:</b>
+		</td>
+		<td>
 		  		<%= @supporter.email %>
 			
 		</td>
 		<td>
 			
 			  <b>Teléfono:</b>
+		</td>
+		<td>
 			  <%= @supporter.phone %>
 			
 		</td>
 		<td>
-		
 			  <b>Celular:</b>
+		</td>
+		<td>
 			  <%= @supporter.cellphone %>
-			
 		</td>
 	</tr>
 	<tr>
 		<td>
-			
 			  <b>Domicilio:</b>
+		</td>
+		<td>
 			  <%= @supporter.street_address %>
-			
 		</td>
 		<td>
-			
-			  <b>Municipio:</b>
-			  <%= @supporter.municipality %>
-			
+			<b>No. Exterior:</b>
 		</td>
 		<td>
-			
-			 
-			
+			<%= @supporter.internal_number %>
+		</td>
+		<td>
+			<b>No. Interior:</b>
+		</td>
+		<td>
+			<%= @supporter.external_number %>
 		</td>
 	</tr>
 	<tr>
 		<td>
-			
-			  <b>Sección:</b>
-			  <%= @supporter.section %>
-			
+			<b>Colonia:</b>
 		</td>
-		<td> <b>Clave Electoral:</b>
-		  <%= @supporter.code %></td>
-				<td>&nbsp;</td>
+		<td>
+			<%= @supporter.neighborhood %>
+		</td>
+		<td>
+			  <b>Municipio:</b>
+		</td>
+		<td>
+			  <%= @supporter.municipality %>
+		</td>
+		<td>
+			<b>Entre las calles:</b>
+		</td>
+		<td>
+			<%= @supporter.between_streets %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			  <b>Sección:</b>
+		</td>
+		<td>
+			<%= @supporter.section %>
+		</td>
+		<td> 
+			<b>Clave Electoral:</b>
+		</td>
+		<td>
+		  	<%= @supporter.code %>
+		</td>
+		<td><b>Tipo de Credencial:</td>
+		<td><%= @supporter.type_of_card %></td>
 	</tr>
 </table>
-<p align="center">[ <%= link_to 'Editar', edit_supporter_path(@supporter) %> |
-<%= link_to 'Regresar', supporters_path %> ]
-</p></div>
-<h2>Agregar un comentario<hr/></h2>
+</div>
+
+
+<h3>Comentarios</h3>
+
+
+<% if @supporter.comments.empty? %>
+	<p>Aún no hay comentarios sobre este simpatizante. ¿Deseas agregar un comentario?</p>
+<% else %>
+<div id="comments">
+	<table width="100%">
+		<tr><th>Contacto</th><th>Fecha</th><th>Comentario</th>
+	<%= render :partial => @supporter.comments %>
+	</table>
+</div>
+<% end %>
+
+<h3>Nuevo Comentario</h3>
+<div style="background: #eeeeee">
 <%= form_for [@supporter, @new_comment] do |f| %>
 	<p>
-		<p><%= f.label :contact_type, "Tipo de Contacto" %><br/>
+		<p><b><%= f.label :contact_type, "Tipo de Contacto" %></b><br/>
 		<%= f.radio_button :contact_type, 'Correo Electrónico', :checked => true%>
 		<%= f.label :contact_type, 'Correo Electrónico', :value => 'Correo Electrónico' %>
 		<%= f.radio_button :contact_type, 'Llamada' %>	
@@ -69,7 +142,7 @@
 		<%= f.label :contact_type, 'SMS', :value => 'SMS' %>
 </p>
 		<p>
-		<%= f.label :content, "Comentario" %><br/>
+		<b><%= f.label :content, "Comentario" %></b><br/>
 		<%= f.text_area :content, :cols => "132", :rows => "10"%></p>
 
 	</p>
@@ -77,20 +150,7 @@
 		<%= f.submit "Agregar Comment"%>
 	</p>
 <% end %>
-
-<h2>Comentarios<hr/></h2>
-
-
-<% if @supporter.comments.empty? %>
-	<p>Aún no hay comentarios sobre este simpatizante. ¿Deseas agregar un comentariov?</p>
-<% else %>
-<div id="comments">
-	<table width="100%" border="1">
-		<tr><th>Contacto</th><th>Fecha</th><th>Comentario</th>
-	<%= render :partial => @supporter.comments %>
-	</table>
 </div>
-<% end %>
 
 
 
