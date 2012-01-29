@@ -1,17 +1,17 @@
 
 <p>
   <b>User:</b>
-  <%= @user.user_id %>
+  <%= best_in_place @user, :user_id %>
 </p>
 
 <p>
   <b>Correo Electrónico:</b>
-  <%= @user.email %>
+  <%= best_in_place @user, :email %>
 </p>
 
 <p>
   <b>Municipality:</b>
-  <%= @user.municipality %>
+  <%= best_in_place @user, :municipality %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
