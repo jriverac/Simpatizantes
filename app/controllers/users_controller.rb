@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   def new
     @user = User.new
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render :json => @user }
+    end
   end
   
   def edit
@@ -16,9 +20,15 @@ class UsersController < ApplicationController
   end
 
   def create
+
     @user = User.new(params[:user])
     if @user.save
-      redirect_to root_url, :notice => "Signed up!"
+      if session[:user_super]
+        redirect_to users_url
+      else
+        redirect_to @user, :notice => "Signed up!"
+      end
+#      redirect_to root_url, :notice => "Signed up!"
     else
       render "new"
     end
@@ -34,7 +44,7 @@ class UsersController < ApplicationController
   end
   
   def update
-
+ 
     @user = User.find(params[:id])
     
     respond_to do |format|
@@ -47,7 +57,7 @@ class UsersController < ApplicationController
         format.json { render :json => @user.errors, :status => :unprocessable_entity }
       end
     end
-end
+  end
   
   def destroy
     @user = User.find(params[:id])

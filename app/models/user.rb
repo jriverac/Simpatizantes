@@ -1,11 +1,10 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation
   
   has_many :supporters
   has_many :comments
   
   attr_accessor :password
-  attr_accessor :email
+ 
   
   before_save :encrypt_password
   
@@ -30,3 +29,4 @@ class User < ActiveRecord::Base
     end
   end
 end
+

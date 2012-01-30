@@ -11,17 +11,30 @@
       </ul>
     </div>
   <% end %>
+	<p>
+		<%= f.label :user_id, "Nombre de Usuario"%><br/>
+		<%= f.text_field :user_id %>
+	</p>
+	
   <p>
     <%= f.label :email, "Correo Electrónico"%><br />
     <%= f.text_field :email %>
   </p>
+<p><%= f.label :municipality, "Municipio"%><br/>
+	<%= f.text_field :municipality %></p>
+  <p>
   <p>
     <%= f.label :password, "Contraseña" %><br />
     <%= f.password_field :password %>
   </p>
-  <p>
+
     <%= f.label :password_confirmation, "Verificar Contraseña" %><br />
     <%= f.password_field :password_confirmation %>
   </p>
+	<p>
+		<%= f.label :super, "Administrador"%>
+		<%= check_box_tag 'Administrador', :super %>
+	</p>
+	
   <p class="button"><%= submit_tag(value="Guardar") %></p>
 <% end %>

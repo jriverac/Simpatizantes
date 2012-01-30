@@ -11,6 +11,7 @@
 	[ <%= link_to 'Nuevo Simpatizante', new_supporter_path %>  
 	<% if session[:user_super] %>
 		| <%= link_to 'Nuevo Usuario', new_user_path %>
+		| <%= link_to 'Usuarios', users_path %>
 	<% end %>
 	]
 </p>
@@ -20,7 +21,7 @@ border-left-width: 1px;
 border-bottom-width: 1px;
 border-right-width: 1px;
 border-top-width: 1px;">
-  <tr class="supporters_header">
+  <tr class="header">
     <th>Nombre</th>
     <th>Correo Electrónico</th>
     <th>Teléfono</th>
