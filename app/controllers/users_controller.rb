@@ -12,12 +12,20 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.all
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @users }
+    if session[:user_id] != nil 
+      
+        
+        @users = User.all
+        respond_to do |format|
+          format.html # index.html.erb
+          format.json { render :json => @users }
+        end
+        
+        else
+      
+        redirect_to root_url, :notice => "Debe iniciar sesion."
+        end
     end
-  end
 
   def create
 

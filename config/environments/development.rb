@@ -1,4 +1,5 @@
 SimpV2::Application.configure do
+=begin
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -15,10 +16,21 @@ SimpV2::Application.configure do
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
+=end
+  
+  config.action_mailer.delivery_method = :smtp
+  
+  config.action_mailer.smtp_settings = { 
+    :address => "smtp.gmail.com", 
+    :port => 587, 
+    :domain => "domain of sender.net", 
+    :user_name => "riverajos@gmail.com", 
+    :password => "tara10gato", 
+    :enable_starttls_auto => true }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
-
+=begin
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
 
@@ -27,4 +39,5 @@ SimpV2::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+=end
 end
